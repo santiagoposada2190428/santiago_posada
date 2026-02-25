@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para yessika 💙</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+}
+
+/* Botón inicial */
+#inicio{
+    padding:20px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:15px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+
+#inicio:hover{
+    transform:scale(1.1);
+}
+
+/* Tarjeta */
+.card{
+    display:none;
+    background:#f5f5f5;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    width:700px;
+    text-align:center;
+    position:relative;
+}
+
+.content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+}
+
+/* Matachito dibujo */
+.mata-container{
+    position:relative;
+}
+.mata-container2{
+    position:relative;
+}
+
+
+.matachito{
+    width:150px;
+    clip-path: inset(100% 0 0 0);
+    animation: dibujar 3s forwards;
+}
+
+@keyframes dibujar{
+    to{ clip-path: inset(0 0 0 0); }
+}
+
+.piu{
+    position:absolute;
+    right:-25px;
+    top:50px;
+    font-weight:bold;
+    opacity:0;
+    animation: mostrarPiu 1s forwards;
+    animation-delay:3s;
+}
+
+@keyframes mostrarPiu{
+    to{ opacity:1; }
+}
+
+/* Corazón */
+.heart-container{
+    display:grid;
+    grid-template-columns: repeat(17, 28px);
+    gap:4px;
+}
+
+.heart{
+    font-size:20px;
+    opacity:0;
+    transform:scale(0);
+    animation: aparecer 0.3s forwards;
+}
+
+@keyframes aparecer{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Texto final */
+.love-text{
+    margin-top:30px;
+    font-size:40px;
+    color:#e6004c;
+    font-weight:bold;
+    opacity:0;
+    animation: aparecerTexto 2s forwards;
+    animation-delay:5.5s;
+.matachito2{
+    width:150px;
+    clip-path: inset(100% 0 0 0);
+    animation: dibujar 3s forwards;
+}
+}
+
+
+@keyframes aparecerTexto{
+    to{ opacity:1; }
+}
+</style>
+</head>
+
+<body>
+
+<button id="inicio" onclick="iniciar()">Oprime aquí 💌</button>
+
+<div class="card" id="card">
+
+    <div class="content">
+
+        <div class="mata-container">
+            <img src="matachito.JPEG" class="matachito">
+            <div class="piu"> </div>
+        </div>
+
+        <div class="heart-container" id="heart"></div>
+
+    </div>
+
+    <div class="love-text">¿Quieres ver series y peliculas conmigo por mucho tiempo?👉🏼👈🏻 💙</div>
+	 <div class="mata-container2">
+            <img src="matachito2.JPEG" class="matachito">
+            <div class="piu"> </div>
+        </div>
+</div>
+
+<script>
+
+function iniciar(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("card").style.display="block";
+}
+
+/* Patrón corazón */
+const heartPattern = [
+"00000000000000000",
+"00011110001111000",
+"00111111011111100",
+"01111111111111110",
+"11111111111111111",
+"11111111111111111",
+"01111111111111110",
+"00111111111111100",
+"00011111111111000",
+"00001111111110000",
+"00000111111100000",
+"00000011111000000",
+"00000001110000000",
+"00000000100000000",
+"00000000100000000",
+
+];
+
+
+const container = document.getElementById("heart");
+let delay = 3.8;
+
+heartPattern.forEach(row=>{
+    row.split("").forEach(cell=>{
+        const span=document.createElement("span");
+        if(cell==="1"){
+            span.innerHTML="❤️";
+            span.classList.add("heart");
+            span.style.animationDelay=delay+"s";
+            delay+=0.02;
+        }
+        container.appendChild(span);
+    });
+});
+
+</script>
+
+</body>
+</html>
